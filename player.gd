@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Space movement settings
 @export var speed: float = 200.0
-@export var jump_velocity: float = -200.0 # Slightly increased for a better feel
+@export var jump_velocity: float = -200.0 # Your preferred custom jump feel
 @export var gravity: float = 300.0
 @export var fall_gravity: float = 80.0
 
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if want_to_jump and is_on_floor():
 		velocity.y = jump_velocity
 
-	# 3. Slow space gravity (Only apply if NOT jumping right this instant)
+	# 3. Slow space gravity
 	if not is_on_floor():
 		if velocity.y > 0:
 			velocity.y += fall_gravity * delta

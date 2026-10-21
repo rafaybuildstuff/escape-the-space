@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bthucn0ji66c3"]
+
+[ext_resource type="Script" uid="uid://1dxrubpjqi8n" path="res://portal.gd" id="1_ef3v5"]
+[ext_resource type="Texture2D" uid="uid://d2j71lv54h1il" path="res://Assets/portal (1).png" id="2_grrij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r214"]
+atlas = ExtResource("2_grrij")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mel2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r214")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cfvr"]
+radius = 17.0
+
+[node name="portal" type="Area2D" unique_id=867010080]
+script = ExtResource("1_ef3v5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963300576]
+sprite_frames = SubResource("SpriteFrames_mel2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1709924774]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_3cfvr")
