@@ -23,6 +23,7 @@ radius = 17.0
 
 [node name="portal" type="Area2D" unique_id=867010080]
 script = ExtResource("1_ef3v5")
+target_scene = "uid://fonx4votrqbx"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963300576]
 sprite_frames = SubResource("SpriteFrames_mel2l")
