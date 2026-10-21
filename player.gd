@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 # Space movement settings
@@ -6,6 +5,9 @@ extends CharacterBody2D
 @export var jump_velocity: float = -300.0
 @export var gravity: float = 250.0
 @export var fall_gravity: float = 100.0
+
+# Reference to the AnimatedSprite2D node
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
 	# Left and right movement
@@ -24,5 +26,12 @@ func _physics_process(delta: float) -> void:
 			velocity.y += gravity * delta
 	else:
 		velocity.y = 0
+
+	# Toggle shooting / default state with 'e'
+	if Input.is_action_just_pressed("e"):
+		if animated_sprite.animation == "default":
+			animated_sprite.play("shoot")
+		else:
+			animated_sprite.play("default")
 
 	move_and_slide()
