@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 # Space movement settings
 @export var speed: float = 200.0
-@export var jump_velocity: float = -250.0 # Slightly increased for a better feel
-@export var gravity: float = 250.0
-@export var fall_gravity: float = 100.0
+@export var jump_velocity: float = -200.0 # Slightly increased for a better feel
+@export var gravity: float = 300.0
+@export var fall_gravity: float = 80.0
 
 # Reference to the AnimatedSprite2D node
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
