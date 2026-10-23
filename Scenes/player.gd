@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 # Space movement settings
-@export var speed: float = 200.0
-@export var jump_velocity: float = -200.0 # Your preferred custom jump feel
+@export var speed: float = 300.0
+@export var jump_velocity: float = -400.0 # Your preferred custom jump feel
 @export var gravity: float = 300.0
-@export var fall_gravity: float = 80.0
+@export var fall_gravity: float = 600.0
 
 # Reference to the AnimatedSprite2D node
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		Input.is_key_pressed(KEY_SPACE) or 
 		Input.is_key_pressed(KEY_W)
 	)
-	
+
 	if want_to_jump and is_on_floor():
 		velocity.y = jump_velocity
 

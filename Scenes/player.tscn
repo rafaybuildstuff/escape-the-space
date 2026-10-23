@@ -1,7 +1,55 @@
 [gd_scene format=3 uid="uid://j5u8mw1ee2d7"]
 
-[ext_resource type="Script" uid="uid://rfqu1qihf5po" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cpvou1yywqv05" path="res://Assets/player (1).png" id="2_cvnsp"]
+
+[sub_resource type="GDScript" id="GDScript_b30ec"]
+script/source = "extends CharacterBody2D
+
+# Space movement settings
+@export var speed: float = 200.0
+@export var jump_velocity: float = -200.0 # Your preferred custom jump feel
+@export var gravity: float = 300.0
+@export var fall_gravity: float = 80.0
+
+# Reference to the AnimatedSprite2D node
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+	# 1. Left and right movement
+	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	velocity.x = direction * speed
+
+	# Flip sprite direction automatically
+	if direction != 0:
+		animated_sprite.flip_h = (direction < 0)
+
+	# 2. Jumping 
+	var want_to_jump = (
+		Input.is_action_just_pressed(\"jump\") or 
+		Input.is_action_just_pressed(\"ui_accept\") or 
+		Input.is_key_pressed(KEY_SPACE) or 
+		Input.is_key_pressed(KEY_W)
+	)
+	
+	if want_to_jump and is_on_floor():
+		velocity.y = jump_velocity
+
+	# 3. Slow space gravity
+	if not is_on_floor():
+		if velocity.y > 0:
+			velocity.y += fall_gravity * delta
+		else:
+			velocity.y += gravity * delta
+
+	# 4. Toggle shooting state with E key
+	if Input.is_action_just_pressed(\"shoot\"):
+		if animated_sprite.animation == \"default\":
+			animated_sprite.play(\"shoot\")
+		else:
+			animated_sprite.play(\"default\")
+
+	move_and_slide()
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -65,8 +113,8 @@ animations = [{
 radius = 17.0
 height = 54.0
 
-[node name="player" type="CharacterBody2D" unique_id=1371868453]
-script = ExtResource("1_4flbx")
+[node name="Player" type="CharacterBody2D" unique_id=1371868453]
+script = SubResource("GDScript_b30ec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=668247831]
 sprite_frames = SubResource("SpriteFrames_cb4qx")

@@ -62,7 +62,7 @@ animations = [{
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cfvr"]
-radius = 12.0
+radius = 13.0
 
 [node name="mini enemy" type="CharacterBody2D" unique_id=2093428336]
 script = ExtResource("1_v5qxw")

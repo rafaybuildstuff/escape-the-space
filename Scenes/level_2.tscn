@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://fonx4votrqbx"]
 
-[ext_resource type="PackedScene" uid="uid://j5u8mw1ee2d7" path="res://Scenes/player.tscn" id="1_v36qu"]
 [ext_resource type="Texture2D" uid="uid://js00c3w45n3u" path="res://Assets/alien plannet tiles.png" id="2_cggpd"]
 [ext_resource type="Texture2D" uid="uid://cdlpirctjuoc7" path="res://Assets/plants.png" id="3_055b2"]
 [ext_resource type="Texture2D" uid="uid://crrwlbij47ao4" path="res://Assets/alien background.png" id="4_2mgoq"]
@@ -8,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ddfne83uxohk8" path="res://Scenes/portal2.tscn" id="5_v36qu"]
 [ext_resource type="PackedScene" uid="uid://bei2jniw64ugg" path="res://Scenes/canvas_layer.tscn" id="6_cggpd"]
 [ext_resource type="PackedScene" uid="uid://dj7sdcp7fhsxm" path="res://Scenes/mini_enemy.tscn" id="8_2mgoq"]
+[ext_resource type="PackedScene" uid="uid://c1h8q8ew3m2ed" path="res://Scenes/player_2.tscn" id="8_uhnj4"]
+[ext_resource type="Script" uid="uid://cqogp6wop6rlp" path="res://Scenes/earth_killzone.gd" id="9_uhnj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dov7"]
 texture = ExtResource("2_cggpd")
@@ -33,12 +34,12 @@ sources/1 = SubResource("TileSetAtlasSource_ehv2h")
 texture = ExtResource("4_055b2")
 texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.879642, -16.578358, 44.61396, -16.757439, 44.33747, 2.6987991, 5.397606, 3.0843468, 6.9397774, 35.855522, 5.3976097, 50, -15.036186, 50, -14.265099, 18.89162, -14.265099, 2.3132591, -45.879642, 3.4698906)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45.266846, -33.514877, 45.91973, -34.167763, 45.484474, -13.928261, 6.746501, -13.71063, 6.311245, 50, -13.493, 50, -13.71063, -13.2753725, -45.484474, -13.928261)
 0:1/0 = 0
 0:1/0/y_sort_origin = -13
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.79025, -44.831585, 44.1787, -44.396328, 45.049213, -24.374454, 5.6583548, -23.939196, 6.311245, 50, -14.581146, 50, -14.798777, -24.809715, -46.79025, -24.809711)
 
 [sub_resource type="TileSet" id="TileSet_lxoxb"]
 tile_size = Vector2i(100, 100)
@@ -55,16 +56,10 @@ texture_region_size = Vector2i(40, 40)
 tile_size = Vector2i(40, 40)
 sources/0 = SubResource("TileSetAtlasSource_15wb7")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_42uki"]
+distance = -261.0
+
 [node name="level 2" type="Node2D" unique_id=77278601]
-
-[node name="player" parent="." unique_id=1371868453 instance=ExtResource("1_v36qu")]
-position = Vector2(43, 9)
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=1474482017]
-position = Vector2(179, -64)
-zoom = Vector2(1.5, 1.5)
-limit_left = -160
-limit_bottom = 160
 
 [node name="alien tiles" type="TileMap" parent="." unique_id=1769280100]
 tile_set = SubResource("TileSet_mel2l")
@@ -94,3 +89,22 @@ scale = Vector2(4, 4)
 
 [node name="mini enemy" parent="." unique_id=2093428336 instance=ExtResource("8_2mgoq")]
 position = Vector2(800, -91)
+
+[node name="player2" parent="." unique_id=1371868453 instance=ExtResource("8_uhnj4")]
+position = Vector2(61, 12)
+
+[node name="Camera2D" type="Camera2D" parent="player2" unique_id=530268067]
+position = Vector2(-5, -61)
+zoom = Vector2(1.5, 1.5)
+limit_left = -150
+limit_top = -550
+limit_right = 4000
+limit_bottom = 195
+
+[node name="earth killzone" type="Area2D" parent="." unique_id=477589661]
+script = ExtResource("9_uhnj4")
+
+[node name="collisionshape2D" type="CollisionShape2D" parent="earth killzone" unique_id=1101000118]
+shape = SubResource("WorldBoundaryShape2D_42uki")
+
+[connection signal="body_entered" from="earth killzone" to="earth killzone" method="_on_body_entered"]
