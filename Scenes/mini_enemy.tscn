@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dj7sdcp7fhsxm"]
+
+[ext_resource type="Script" uid="uid://cqr6t1246ab4n" path="res://Scenes/mini_enemy.gd" id="1_v5qxw"]
+[ext_resource type="Texture2D" uid="uid://dy88pl3b81slf" path="res://Assets/New Piskel (2).png" id="2_b2c35"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xqkb"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq6km"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(0, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqh6k"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(40, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlac6"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li630"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e475f"]
+atlas = ExtResource("2_b2c35")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mel2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xqkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq6km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqh6k")
+}],
+"loop": 1,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlac6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li630")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e475f")
+}],
+"loop": 1,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mel2l"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cfvr"]
+radius = 12.0
+
+[node name="mini enemy" type="CharacterBody2D" unique_id=2093428336]
+script = ExtResource("1_v5qxw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=611116645]
+sprite_frames = SubResource("SpriteFrames_mel2l")
+animation = &"left"
+autoplay = "left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762976897]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_mel2l")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1223067927]
+position = Vector2(-12, 0)
+target_position = Vector2(0, 20)
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1676607799]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1665803473]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_3cfvr")

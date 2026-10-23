@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://js00c3w45n3u" path="res://Assets/alien plannet tiles.png" id="2_cggpd"]
 [ext_resource type="Texture2D" uid="uid://cdlpirctjuoc7" path="res://Assets/plants.png" id="3_055b2"]
 [ext_resource type="Texture2D" uid="uid://crrwlbij47ao4" path="res://Assets/alien background.png" id="4_2mgoq"]
+[ext_resource type="Texture2D" uid="uid://cwd0y1xqng2mi" path="res://Assets/parkour.png" id="4_055b2"]
 [ext_resource type="PackedScene" uid="uid://ddfne83uxohk8" path="res://Scenes/portal2.tscn" id="5_v36qu"]
 [ext_resource type="PackedScene" uid="uid://bei2jniw64ugg" path="res://Scenes/canvas_layer.tscn" id="6_cggpd"]
+[ext_resource type="PackedScene" uid="uid://dj7sdcp7fhsxm" path="res://Scenes/mini_enemy.tscn" id="8_2mgoq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dov7"]
 texture = ExtResource("2_cggpd")
@@ -26,6 +28,22 @@ tile_size = Vector2i(40, 40)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7dov7")
 sources/1 = SubResource("TileSetAtlasSource_ehv2h")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mgoq"]
+texture = ExtResource("4_055b2")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+0:1/0 = 0
+0:1/0/y_sort_origin = -13
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+
+[sub_resource type="TileSet" id="TileSet_lxoxb"]
+tile_size = Vector2i(100, 100)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2mgoq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_15wb7"]
 texture = ExtResource("4_2mgoq")
@@ -52,7 +70,14 @@ limit_bottom = 160
 tile_set = SubResource("TileSet_mel2l")
 rendering_quadrant_size = 40
 format = 2
-layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 196604, 0, 1, 262140, 0, 1, 196605, 0, 1, 262141, 0, 1, 196606, 0, 1, 262142, 0, 1, 196607, 0, 1, 262143, 0, 1, 131072, 0, 1, 196608, 0, 1, 131073, 0, 1, 196609, 0, 1, 131074, 0, 1, 196610, 0, 1, 131075, 0, 1, 196611, 0, 1, 131076, 0, 1, 196612, 0, 1, 131077, 0, 1, 196613, 0, 1)
+layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65540, 0, 0, 65541, 0, 0, 196604, 0, 1, 262140, 0, 1, 196605, 0, 1, 262141, 0, 1, 196606, 0, 1, 262142, 0, 1, 196607, 0, 1, 262143, 0, 1, 131072, 0, 1, 196608, 0, 1, 131073, 0, 1, 196609, 0, 1, 131074, 0, 1, 196610, 0, 1, 131075, 0, 1, 196611, 0, 1, 131076, 0, 1, 196612, 0, 1, 131077, 0, 1, 196613, 0, 1, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131078, 0, 1, 196614, 0, 1, 131079, 0, 1, 196615, 0, 1, 131080, 0, 1, 196616, 0, 1, 131081, 0, 1, 196617, 0, 1, 131082, 0, 1, 196618, 0, 1, 131083, 0, 1, 196619, 0, 1, 131084, 0, 1, 196620, 0, 1, 65539, 0, 0, 8, 1, 0, 65532, 1, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -131050, 0, 0, -65523, 0, 1, 13, 0, 1, 65549, 0, 1, 131085, 0, 1, 196621, 0, 1, -65522, 0, 1, 14, 0, 1, 65550, 0, 1, 131086, 0, 1, 196622, 0, 1, -65521, 0, 1, 15, 0, 1, 65551, 0, 1, 131087, 0, 1, 196623, 0, 1, -65520, 0, 1, 16, 0, 1, 65552, 0, 1, 131088, 0, 1, 196624, 0, 1, -65519, 0, 1, 17, 0, 1, 65553, 0, 1, 131089, 0, 1, 196625, 0, 1, -65518, 0, 1, 18, 0, 1, 65554, 0, 1, 131090, 0, 1, 196626, 0, 1, -65517, 0, 1, 19, 0, 1, 65555, 0, 1, 131091, 0, 1, 196627, 0, 1, -65516, 0, 1, 20, 0, 1, 65556, 0, 1, 131092, 0, 1, 196628, 0, 1, -65515, 0, 1, 21, 0, 1, 65557, 0, 1, 131093, 0, 1, 196629, 0, 1, -65514, 0, 1, 22, 0, 1, 65558, 0, 1, 131094, 0, 1, 196630, 0, 1, -131049, 0, 0, -131048, 0, 0, -131047, 0, 0, -131046, 0, 0, -131045, 0, 0, -65513, 0, 1, 23, 0, 1, 65559, 0, 1, 131095, 0, 1, 196631, 0, 1, -65512, 0, 1, 24, 0, 1, 65560, 0, 1, 131096, 0, 1, 196632, 0, 1, -65511, 0, 1, 25, 0, 1, 65561, 0, 1, 131097, 0, 1, 196633, 0, 1, -65510, 0, 1, 26, 0, 1, 65562, 0, 1, 131098, 0, 1, 196634, 0, 1, -65509, 0, 1, 27, 0, 1, 65563, 0, 1, 131099, 0, 1, 196635, 0, 1)
+
+[node name="parkour" type="TileMap" parent="." unique_id=479405021]
+position = Vector2(0, 40)
+tile_set = SubResource("TileSet_lxoxb")
+rendering_quadrant_size = 100
+format = 2
+layer_0/tile_data = PackedInt32Array(-65534, 0, 0, -65532, 0, 1)
 
 [node name="background" type="TileMap" parent="." unique_id=1375244706]
 z_index = -2
@@ -66,3 +91,6 @@ position = Vector2(-56, -25)
 scale = Vector2(4, 4)
 
 [node name="CanvasLayer" parent="." unique_id=462013218 instance=ExtResource("6_cggpd")]
+
+[node name="mini enemy" parent="." unique_id=2093428336 instance=ExtResource("8_2mgoq")]
+position = Vector2(800, -91)
