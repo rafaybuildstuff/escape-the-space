@@ -1,7 +1,7 @@
 
 extends Area2D
 
-@export var jump_force: float = -800.0
+@export var jump_force: float = -850.0
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
