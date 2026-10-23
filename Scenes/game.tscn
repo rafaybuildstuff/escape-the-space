@@ -90,7 +90,7 @@ script = ExtResource("1_3dryh")
 shape = SubResource("WorldBoundaryShape2D_mel2l")
 
 [node name="player" parent="." unique_id=1371868453 instance=ExtResource("1_ebmjs")]
-position = Vector2(3511, 21)
+position = Vector2(41, 22)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=560364560]
 position = Vector2(-5, -61)

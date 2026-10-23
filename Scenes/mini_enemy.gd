@@ -1,12 +1,13 @@
 
 extends CharacterBody2D
 
-@export var speed: float = 100.0
+@export var speed: float = 80.0
 @export var gravity: float = 980.0
 @export var max_health: int = 3
 
 var current_health: int = 3
 var direction: int = 1
+var player_hit: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var edge_detector: RayCast2D = $RayCast2D
@@ -15,21 +16,17 @@ var direction: int = 1
 
 func _ready() -> void:
 	current_health = max_health
-
 	player_detector.monitoring = true
 	player_detector.body_entered.connect(_on_player_detector_body_entered)
 
 
 func _physics_process(delta: float) -> void:
-	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Turn around at walls and edges
 	if is_on_wall() or not edge_detector.is_colliding():
 		flip_direction()
 
-	# Enemy movement
 	velocity.x = direction * speed
 	move_and_slide()
 
@@ -52,8 +49,9 @@ func take_damage(amount: int = 1) -> void:
 
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	print("Detected: ", body.name)
-
 	if body.is_in_group("Player") or body.name == "player2":
-		print("PLAYER HIT! Restarting level!")
+		if player_hit:
+			return
+
+		player_hit = true
 		get_tree().reload_current_scene()

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bu25iyh6baogp"]
+
+[ext_resource type="Script" uid="uid://oq2ky6ucbruh" path="res://jumper.gd" id="1_ysxgc"]
+[ext_resource type="Texture2D" uid="uid://mojcfywomawu" path="res://Assets/blocks and jumper of the game.png" id="2_iw5d4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub16k"]
+atlas = ExtResource("2_iw5d4")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mel2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub16k")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mel2l"]
+size = Vector2(51, 47)
+
+[node name="jumper" type="Area2D" unique_id=2137178107]
+script = ExtResource("1_ysxgc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1812567014]
+sprite_frames = SubResource("SpriteFrames_mel2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=635042234]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_mel2l")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d32gw8mdsuxu" path="res://Scenes/player_2.gd" id="1_cgts5"]
 [ext_resource type="Texture2D" uid="uid://cpvou1yywqv05" path="res://Assets/player (1).png" id="1_mkara"]
+[ext_resource type="PackedScene" uid="uid://b7x44q4luausv" path="res://Scenes/weapon.tscn" id="2_a3adp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("1_mkara")
@@ -65,8 +66,9 @@ animations = [{
 radius = 17.0
 height = 54.0
 
-[node name="Player2" type="CharacterBody2D" unique_id=1371868453]
+[node name="Player2" type="CharacterBody2D" unique_id=1371868453 groups=["Player"]]
 script = ExtResource("1_cgts5")
+weapon_scene = ExtResource("2_a3adp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=668247831]
 sprite_frames = SubResource("SpriteFrames_cb4qx")
