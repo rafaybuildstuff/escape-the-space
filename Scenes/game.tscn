@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqogp6wop6rlp" path="res://Scenes/earth_killzone.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://j5u8mw1ee2d7" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://mojcfywomawu" path="res://Assets/blocks and jumper of the game.png" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://bowqsu2c27gev" path="res://Scenes/camera_2d.gd" id="3_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://dly03v1jnmlcs" path="res://Assets/background (1).png" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://kuavxd80hea6" path="res://Scenes/platform.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bthucn0ji66c3" path="res://Scenes/portal.tscn" id="6_i6g32"]
@@ -100,6 +101,7 @@ limit_left = -350
 limit_top = -550
 limit_right = 4000
 limit_bottom = 200
+script = ExtResource("3_h4fw4")
 
 [node name="Blocks" type="TileMap" parent="." unique_id=1414193959]
 z_index = -1

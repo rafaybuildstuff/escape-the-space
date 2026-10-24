@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b7qpnd7rryajp"]
+
+[ext_resource type="Script" uid="uid://brvjad0byvsqu" path="res://danger.gd" id="1_fddpl"]
+[ext_resource type="Texture2D" uid="uid://ue1cn01t6o48" path="res://Assets/pepu.png" id="2_011eo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mel2l"]
+size = Vector2(25, 30)
+
+[node name="danger" type="Area2D" unique_id=1491911297]
+script = ExtResource("1_fddpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461641512]
+texture = ExtResource("2_011eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1343610109]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_mel2l")
