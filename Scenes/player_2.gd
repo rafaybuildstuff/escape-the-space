@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 const SPEED = 200.0
@@ -39,11 +38,11 @@ func _physics_process(delta: float) -> void:
 		gun_equipped = not gun_equipped
 
 		if gun_equipped:
-			animated_sprite.play("shoot")
+			animated_sprite.play("shoot") # Plays the animation named "shoot"
 		else:
 			animated_sprite.play("default")
 
-	# Fire with left mouse click or Q
+	# Fire using your Input Map action "fire_weapon"
 	if gun_equipped and Input.is_action_just_pressed("fire_weapon"):
 		throw_weapon()
 

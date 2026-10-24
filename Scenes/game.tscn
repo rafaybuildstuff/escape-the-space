@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kuavxd80hea6" path="res://Scenes/platform.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bthucn0ji66c3" path="res://Scenes/portal.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bei2jniw64ugg" path="res://Scenes/canvas_layer.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://4waaus764sna" path="res://Scenes/rocket.tscn" id="8_v158k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mel2l"]
 distance = -261.0
@@ -126,5 +127,10 @@ position = Vector2(3818, -14)
 scale = Vector2(4, 4)
 
 [node name="CanvasLayer" parent="." unique_id=462013218 instance=ExtResource("7_1l0tm")]
+
+[node name="Rocket" parent="." unique_id=472831922 instance=ExtResource("8_v158k")]
+z_index = -1
+position = Vector2(-69, -10)
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="earth killzone" to="earth killzone" method="_on_body_entered"]

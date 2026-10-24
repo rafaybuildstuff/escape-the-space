@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://4waaus764sna"]
+
+[ext_resource type="Script" uid="uid://7hn4o1clhdiu" path="res://rocket.gd" id="1_kvp10"]
+[ext_resource type="Texture2D" uid="uid://tdxwmotns5pg" path="res://Assets/rocket.png" id="2_hthiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpb7v"]
+atlas = ExtResource("2_hthiq")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cum1y"]
+atlas = ExtResource("2_hthiq")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cfvr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpb7v")
+}],
+"loop": 1,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cum1y")
+}],
+"loop": 1,
+"name": &"fixed",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mel2l"]
+radius = 35.0
+height = 76.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mel2l"]
+radius = 39.812057
+
+[node name="Rocket" type="Area2D" unique_id=472831922]
+script = ExtResource("1_kvp10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1286984716]
+sprite_frames = SubResource("SpriteFrames_3cfvr")
+animation = &"broken"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=620049541]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_mel2l")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=201171818]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=620355643]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_mel2l")

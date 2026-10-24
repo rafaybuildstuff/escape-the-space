@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 @export var speed: float = 150.0
@@ -8,6 +7,8 @@ extends CharacterBody2D
 var current_health: int = 5
 var direction: int = 1
 var player_hit: bool = false
+var flip_cooldown: float = 0.1
+var flip_timer: float = 0.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var edge_detector: RayCast2D = $RayCast2D
@@ -21,11 +22,17 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Count down the flip cooldown timer
+	if flip_timer > 0:
+		flip_timer -= delta
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if is_on_wall() or not edge_detector.is_colliding():
+	# Only flip if the cooldown has finished and we hit a wall or reach a ledge
+	if flip_timer <= 0 and (is_on_wall() or not edge_detector.is_colliding()):
 		flip_direction()
+		flip_timer = flip_cooldown # Reset cooldown timer to prevent rapid vibrating
 
 	velocity.x = direction * speed
 	move_and_slide()
@@ -39,6 +46,7 @@ func flip_direction() -> void:
 
 	if edge_detector:
 		edge_detector.position.x = abs(edge_detector.position.x) * direction
+		edge_detector.force_raycast_update() # Forces the raycast to update immediately
 
 
 func take_damage(amount: int = 1) -> void:
