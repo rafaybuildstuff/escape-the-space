@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 @export var speed: float = 80.0
@@ -18,6 +17,7 @@ func _ready() -> void:
 	current_health = max_health
 	player_detector.monitoring = true
 	player_detector.body_entered.connect(_on_player_detector_body_entered)
+	update_animation()
 
 
 func _physics_process(delta: float) -> void:
@@ -33,19 +33,25 @@ func _physics_process(delta: float) -> void:
 
 func flip_direction() -> void:
 	direction *= -1
-
-	if sprite:
-		sprite.flip_h = direction < 0
+	update_animation()
 
 	if edge_detector:
 		edge_detector.position.x = abs(edge_detector.position.x) * direction
+
+
+func update_animation() -> void:
+	if sprite:
+		if direction > 0:
+			sprite.play("right")
+		else:
+			sprite.play("left")
 
 
 func take_damage(amount: int = 1) -> void:
 	current_health -= amount
 
 	if current_health <= 0:
-		queue_free()
+		call_deferred("queue_free")
 
 
 func _on_player_detector_body_entered(body: Node2D) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqogp6wop6rlp" path="res://Scenes/earth_killzone.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://j5u8mw1ee2d7" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://byfo16fx0syr5" path="res://Scenes/game.gd" id="1_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://mojcfywomawu" path="res://Assets/blocks and jumper of the game.png" id="2_qxrlw"]
 [ext_resource type="Script" uid="uid://bowqsu2c27gev" path="res://Scenes/camera_2d.gd" id="3_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://dly03v1jnmlcs" path="res://Assets/background (1).png" id="3_wrm1d"]
@@ -9,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bthucn0ji66c3" path="res://Scenes/portal.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bei2jniw64ugg" path="res://Scenes/canvas_layer.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://4waaus764sna" path="res://Scenes/rocket.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://dpyk0xtn4lwig" path="res://Scenes/broadcast_banner.tscn" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://bnsmvs0k4pmv2" path="res://Scenes/message_trigger.gd" id="12_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://e4e8lgic5wq0" path="res://Scenes/broadcast_banner2.tscn" id="13_1phco"]
+[ext_resource type="PackedScene" uid="uid://el5y0kau1gh3" path="res://Scenes/rocket_part.tscn" id="14_1phco"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mel2l"]
 distance = -261.0
@@ -83,7 +88,11 @@ _data = {
 &"go": SubResource("Animation_i6g32")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mel2l"]
+size = Vector2(134.5, 5)
+
 [node name="game" type="Node2D" unique_id=1790660571]
+script = ExtResource("1_ldgsr")
 
 [node name="earth killzone" type="Area2D" parent="." unique_id=1770334012]
 script = ExtResource("1_3dryh")
@@ -108,7 +117,7 @@ z_index = -1
 tile_set = SubResource("TileSet_3cfvr")
 rendering_quadrant_size = 50
 format = 2
-layer_0/tile_data = PackedInt32Array(131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 196601, 0, 1, 262137, 0, 1, 196602, 0, 1, 262138, 0, 1, 196603, 0, 1, 262139, 0, 1, 196604, 0, 1, 262140, 0, 1, 196605, 0, 1, 262141, 0, 1, 196606, 0, 1, 262142, 0, 1, 196607, 0, 1, 262143, 0, 1, 131072, 0, 1, 196608, 0, 1, 131073, 0, 1, 196609, 0, 1, 131074, 0, 1, 196610, 0, 1, 131075, 0, 1, 196611, 0, 1, 131076, 0, 1, 196612, 0, 1, 131077, 0, 1, 196613, 0, 1, 131078, 0, 1, 196614, 0, 1, 65549, 65536, 0, 19, 65536, 0, 65561, 65536, 0, 65567, 0, 0, 65568, 0, 0, 65569, 0, 0, 65570, 0, 0, 65571, 0, 0, 65572, 0, 0, 65573, 0, 0, 131103, 0, 1, 196639, 0, 1, 196640, 0, 1, 196641, 0, 1, 196642, 0, 1, 196643, 0, 1, 196644, 0, 1, 196645, 0, 1, 131109, 0, 1, 131108, 0, 1, 131107, 0, 1, 131106, 0, 1, 131105, 0, 1, 131104, 0, 1, 2, 65536, 1, 65529, 65536, 1, 65591, 0, 0, 65592, 0, 0, 65593, 0, 0, 65594, 0, 0, 65595, 0, 0, 65596, 0, 0, 65597, 0, 0, 65598, 0, 0, 65599, 0, 0, 65600, 0, 0, 65601, 0, 0, 65602, 0, 0, 131127, 0, 1, 196663, 0, 1, 196664, 0, 1, 196665, 0, 1, 196666, 0, 1, 196667, 0, 1, 196668, 0, 1, 196669, 0, 1, 196670, 0, 1, 196671, 0, 1, 196672, 0, 1, 196673, 0, 1, 196674, 0, 1, 131138, 0, 1, 131137, 0, 1, 131136, 0, 1, 131135, 0, 1, 131134, 0, 1, 131133, 0, 1, 131132, 0, 1, 131131, 0, 1, 131130, 0, 1, 131129, 0, 1, 131128, 0, 1, 59, 65536, 0, 65603, 0, 0, 65604, 0, 0, 65605, 0, 0, 65606, 0, 0, 65607, 0, 0, 65608, 0, 0, 65609, 0, 0, 65610, 0, 0, 65611, 0, 0, 65612, 0, 0, 65613, 0, 0, 131139, 0, 1, 196675, 0, 1, 196676, 0, 1, 196677, 0, 1, 196678, 0, 1, 196679, 0, 1, 196680, 0, 1, 196681, 0, 1, 196682, 0, 1, 196683, 0, 1, 131148, 0, 1, 131149, 0, 1, 196685, 0, 1, 196684, 0, 1, 131147, 0, 1, 131146, 0, 1, 131145, 0, 1, 131144, 0, 1, 131143, 0, 1, 131142, 0, 1, 131141, 0, 1, 131140, 0, 1, 65615, 0, 0, 65614, 0, 0, 131150, 0, 1, 196686, 0, 1, 131151, 0, 1, 196687, 0, 1, -65475, 65536, 0, -131009, 65536, 0, -65471, 65536, 0, 67, 65536, 0)
+layer_0/tile_data = PackedInt32Array(131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 196601, 0, 1, 262137, 0, 1, 196602, 0, 1, 262138, 0, 1, 196603, 0, 1, 262139, 0, 1, 196604, 0, 1, 262140, 0, 1, 196605, 0, 1, 262141, 0, 1, 196606, 0, 1, 262142, 0, 1, 196607, 0, 1, 262143, 0, 1, 131072, 0, 1, 196608, 0, 1, 131073, 0, 1, 196609, 0, 1, 131074, 0, 1, 196610, 0, 1, 131075, 0, 1, 196611, 0, 1, 131076, 0, 1, 196612, 0, 1, 131077, 0, 1, 196613, 0, 1, 131078, 0, 1, 196614, 0, 1, 65549, 65536, 0, 19, 65536, 0, 65561, 65536, 0, 65567, 0, 0, 65568, 0, 0, 65569, 0, 0, 65570, 0, 0, 65571, 0, 0, 65572, 0, 0, 65573, 0, 0, 131103, 0, 1, 196639, 0, 1, 196640, 0, 1, 196641, 0, 1, 196642, 0, 1, 196643, 0, 1, 196644, 0, 1, 196645, 0, 1, 131109, 0, 1, 131108, 0, 1, 131107, 0, 1, 131106, 0, 1, 131105, 0, 1, 131104, 0, 1, 2, 65536, 1, 65529, 65536, 1, 65591, 0, 0, 65592, 0, 0, 65593, 0, 0, 131127, 0, 1, 196663, 0, 1, 196664, 0, 1, 196665, 0, 1, 131129, 0, 1, 131128, 0, 1, 59, 65536, 0, 65605, 0, 0, 65606, 0, 0, 65607, 0, 0, 65608, 0, 0, 65609, 0, 0, 65610, 0, 0, 65611, 0, 0, 65612, 0, 0, 65613, 0, 0, 196677, 0, 1, 196678, 0, 1, 196679, 0, 1, 196680, 0, 1, 196681, 0, 1, 196682, 0, 1, 196683, 0, 1, 131148, 0, 1, 131149, 0, 1, 196685, 0, 1, 196684, 0, 1, 131147, 0, 1, 131146, 0, 1, 131145, 0, 1, 131144, 0, 1, 131143, 0, 1, 131142, 0, 1, 131141, 0, 1, 65615, 0, 0, 65614, 0, 0, 131150, 0, 1, 196686, 0, 1, 131151, 0, 1, 196687, 0, 1, -65475, 65536, 0, -131009, 65536, 0, -65471, 65536, 0, 67, 65536, 0)
 
 [node name="background" type="TileMap" parent="." unique_id=710138534]
 z_index = -2
@@ -125,6 +134,7 @@ libraries/ = SubResource("AnimationLibrary_1l0tm")
 autoplay = &"go"
 
 [node name="portal" parent="." unique_id=867010080 instance=ExtResource("6_i6g32")]
+z_index = -1
 position = Vector2(3818, -14)
 scale = Vector2(4, 4)
 
@@ -134,5 +144,20 @@ scale = Vector2(4, 4)
 z_index = -1
 position = Vector2(-69, -10)
 scale = Vector2(2, 2)
+
+[node name="BroadcastBanner" parent="." unique_id=1247835603 instance=ExtResource("11_o5yvi")]
+
+[node name="message2" type="Area2D" parent="." unique_id=641760363]
+script = ExtResource("12_rfjv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="message2" unique_id=147322148]
+position = Vector2(3665, 47.5)
+shape = SubResource("RectangleShape2D_mel2l")
+
+[node name="BroadcastBanner2" parent="." unique_id=865027179 instance=ExtResource("13_1phco")]
+
+[node name="rocket part" parent="." unique_id=367540475 instance=ExtResource("14_1phco")]
+position = Vector2(3175.0002, -123)
+scale = Vector2(0.7, 0.7)
 
 [connection signal="body_entered" from="earth killzone" to="earth killzone" method="_on_body_entered"]

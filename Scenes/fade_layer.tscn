@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2caj8ynsiok8"]
+
+[ext_resource type="Script" uid="uid://cjpujdr0ff4x4" path="res://black_fade.gd" id="1_unlr0"]
+
+[node name="FadeLayer" type="CanvasLayer" unique_id=1072959644]
+
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=825076226 groups=["fade_layer"]]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_unlr0")

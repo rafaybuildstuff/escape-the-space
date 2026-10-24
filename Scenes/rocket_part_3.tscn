@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c6glnr8ttjm3w"]
+
+[ext_resource type="Script" uid="uid://ck1xb8xdsijbu" path="res://rocket_part_3.gd" id="1_u11yx"]
+[ext_resource type="Texture2D" uid="uid://dm5nu8k48gajc" path="res://Assets/coins.png" id="2_xhhno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elumd"]
+atlas = ExtResource("2_xhhno")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cfvr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elumd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxoxb"]
+size = Vector2(34, 39)
+
+[node name="rocket part 3" type="Area2D" unique_id=1798862088]
+script = ExtResource("1_u11yx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113051600]
+sprite_frames = SubResource("SpriteFrames_3cfvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=80098779]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_lxoxb")

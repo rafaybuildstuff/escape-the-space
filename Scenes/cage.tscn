@@ -45,7 +45,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mel2l"]
 size = Vector2(40, 34)
 
-[node name="cage" type="Area2D" unique_id=679697489]
+[node name="cage" type="StaticBody2D" unique_id=1637076395]
 script = ExtResource("1_x53gr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1247964808]

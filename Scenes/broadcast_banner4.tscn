@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bfqhikdyyg2uh"]
+
+[ext_resource type="Script" uid="uid://lmm4vowwe1vs" path="res://broadcast_banner4.gd" id="1_yg7t5"]
+
+[node name="BroadcastBanner4" type="CanvasLayer" unique_id=1247835603]
+process_mode = 3
+script = ExtResource("1_yg7t5")
+
+[node name="BannerContainer" type="Control" parent="." unique_id=528681408]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="BannerContainer" unique_id=858679759]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 153.0
+offset_top = 506.0
+offset_right = 989.0
+offset_bottom = 622.0
+
+[node name="Label" type="Label" parent="BannerContainer/Panel" unique_id=2000793602]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 87.0
+offset_right = 833.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 14
+text = "ENTER ->"
+
+[node name="Label2" type="Label" parent="BannerContainer/Panel" unique_id=1343937927]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 21.0
+offset_right = 811.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 22
+text = "What's happening to the sky???
+Now that I have all the parts, I've got to get out of here"
