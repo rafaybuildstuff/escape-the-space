@@ -321,6 +321,7 @@ target_scene = "uid://bhyesqe5da3oi"
 destination_portal_name = "portal3"
 
 [node name="Label" type="Label" parent="." unique_id=81419870]
+z_index = -1
 offset_left = 124.0
 offset_top = -65.0
 offset_right = 235.0
@@ -330,6 +331,7 @@ theme_override_font_sizes/font_size = 14
 text = "\"E\" to equip GUN"
 
 [node name="Label2" type="Label" parent="." unique_id=668368262]
+z_index = -1
 offset_left = 522.0
 offset_top = -142.0
 offset_right = 633.0
@@ -339,6 +341,7 @@ theme_override_font_sizes/font_size = 14
 text = "\"Q\" to shoot"
 
 [node name="Label3" type="Label" parent="." unique_id=1024181304]
+z_index = -1
 offset_left = 2693.0
 offset_top = -190.0
 offset_right = 2804.0
