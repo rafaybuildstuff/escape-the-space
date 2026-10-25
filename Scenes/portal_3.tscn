@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ivw801ck31u1"]
+
+[ext_resource type="Script" uid="uid://blwasmvdrf5fg" path="res://portal_3.gd" id="1_uvmf7"]
+[ext_resource type="Texture2D" uid="uid://d2j71lv54h1il" path="res://Assets/portal (1).png" id="2_gsg3a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mel2l"]
+radius = 23.021729
+
+[node name="portal 3" type="Area2D" unique_id=1846502564]
+script = ExtResource("1_uvmf7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1221955738]
+texture = ExtResource("2_gsg3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009950686]
+shape = SubResource("CircleShape2D_mel2l")

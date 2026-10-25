@@ -59,7 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mel2l"]
-size = Vector2(48, 50)
+size = Vector2(49, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cfvr"]
 size = Vector2(51, 53)
@@ -72,6 +72,7 @@ sprite_frames = SubResource("SpriteFrames_mel2l")
 animation = &"left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=662575422]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_mel2l")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1266911675]

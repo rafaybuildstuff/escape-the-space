@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://j5u8mw1ee2d7"]
 
+[ext_resource type="AudioStream" uid="uid://7hred8eqvwud" path="res://Music/dying.mp3" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cpvou1yywqv05" path="res://Assets/player (1).png" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://cfqerluk4k0y" path="res://Music/jimp22.mp3" id="3_vgqql"]
 
 [sub_resource type="GDScript" id="GDScript_b30ec"]
 script/source = "extends CharacterBody2D
@@ -13,11 +15,18 @@ script/source = "extends CharacterBody2D
 @export var weapon_scene: PackedScene
 
 var gun_equipped: bool = false
+var is_dying: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+# Safe node retrieval for death audio only
+@onready var die_audio: AudioStreamPlayer2D = get_node_or_null(\"DieAudio\")
+
 
 func _physics_process(delta: float) -> void:
+	if is_dying:
+		return
+
 	# Left and right movement
 	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
 	velocity.x = direction * speed
@@ -46,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		gun_equipped = not gun_equipped
 
 		if gun_equipped:
-			animated_sprite.play(\"shoot\") # Plays your animation named \"shoot\"
+			animated_sprite.play(\"shoot\")
 		else:
 			animated_sprite.play(\"default\")
 
@@ -71,6 +80,35 @@ func throw_weapon() -> void:
 	)
 
 	weapon.direction = -1.0 if animated_sprite.flip_h else 1.0
+
+
+# --- DEATH FUNCTION FIX ---
+func die() -> void:
+	if is_dying:
+		return
+		
+	is_dying = true
+	velocity = Vector2.ZERO
+	
+	# Hide sprite visually so player appears \"dead/gone\"
+	if animated_sprite:
+		animated_sprite.visible = false
+		
+	# Disable collision safely so hazards ignore player
+	var collision_shape = get_node_or_null(\"CollisionShape2D\")
+	if collision_shape:
+		collision_shape.set_deferred(\"disabled\", true)
+	
+	print(\"Player died! Playing death sound 1 second early...\")
+	
+	# Play death audio
+	if die_audio and die_audio.stream:
+		die_audio.play()
+		
+	# Wait for sound to play through
+	await get_tree().create_timer(1.0).timeout
+	
+	get_tree().reload_current_scene()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
@@ -144,3 +182,11 @@ animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020874599]
 shape = SubResource("CapsuleShape2D_he5he")
+
+[node name="DieAudio" type="AudioStreamPlayer2D" parent="." unique_id=933383916]
+stream = ExtResource("2_6t5aa")
+volume_db = 6.0
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="." unique_id=1171826000]
+stream = ExtResource("3_vgqql")
+volume_db = 6.0

@@ -10,13 +10,10 @@ var player_hit: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var edge_detector: RayCast2D = $RayCast2D
-@onready var player_detector: Area2D = $PlayerDetector
 
 
 func _ready() -> void:
 	current_health = max_health
-	player_detector.monitoring = true
-	player_detector.body_entered.connect(_on_player_detector_body_entered)
 	update_animation()
 
 
@@ -29,6 +26,17 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = direction * speed
 	move_and_slide()
+
+	# Directly check if we are physically touching the player
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider and not player_hit:
+			if collider.has_method("die") or collider.name.to_lower().contains("player"):
+				player_hit = true
+				print("Mini enemy touched player physically! Reloading scene...")
+				get_tree().reload_current_scene()
 
 
 func flip_direction() -> void:
@@ -52,12 +60,3 @@ func take_damage(amount: int = 1) -> void:
 
 	if current_health <= 0:
 		call_deferred("queue_free")
-
-
-func _on_player_detector_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") or body.name == "player2":
-		if player_hit:
-			return
-
-		player_hit = true
-		get_tree().reload_current_scene()

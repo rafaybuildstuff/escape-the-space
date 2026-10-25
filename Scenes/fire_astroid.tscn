@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://crkyps5viy3g1"]
+
+[ext_resource type="Script" uid="uid://bewpqw2xub8bu" path="res://fire_astroid.gd" id="1_5q17o"]
+[ext_resource type="Texture2D" uid="uid://b7y4dn0b7134h" path="res://Assets/New Piskel (3).png" id="2_jg6hy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjung"]
+atlas = ExtResource("2_jg6hy")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mel2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjung")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mel2l"]
+radius = 12.803152
+height = 46.44612
+
+[node name="fire astroid" type="Area2D" unique_id=1944720880 groups=["fire_asteroids"]]
+script = ExtResource("1_5q17o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=565355394]
+sprite_frames = SubResource("SpriteFrames_mel2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=61530621]
+position = Vector2(-1, -1)
+rotation = -2.4888396
+shape = SubResource("CapsuleShape2D_mel2l")
