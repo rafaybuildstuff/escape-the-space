@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://el5y0kau1gh3" path="res://Scenes/rocket_part.tscn" id="14_1phco"]
 [ext_resource type="AudioStream" uid="uid://bij3rd3yeqyre" path="res://Music/space background music.mp3" id="15_nb51f"]
 [ext_resource type="PackedScene" uid="uid://ivw801ck31u1" path="res://Scenes/portal_3.tscn" id="17_ewbju"]
+[ext_resource type="FontFile" uid="uid://ugc14klbieq8" path="res://Assets/heading.ttf" id="18_85qyi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mel2l"]
 distance = -261.0
@@ -156,6 +157,7 @@ position = Vector2(-69, -10)
 scale = Vector2(2, 2)
 
 [node name="BroadcastBanner" parent="." unique_id=1247835603 instance=ExtResource("11_o5yvi")]
+message_id = ""
 
 [node name="message2" type="Area2D" parent="." unique_id=641760363]
 script = ExtResource("12_rfjv2")
@@ -180,5 +182,15 @@ scale = Vector2(3, 3)
 z_index = -2
 position = Vector2(3818, -14)
 scale = Vector2(4, 4)
+
+[node name="Label" type="Label" parent="." unique_id=2132769251]
+texture_filter = 1
+offset_left = -169.0
+offset_top = -108.0
+offset_right = 43.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("18_85qyi")
+theme_override_font_sizes/font_size = 13
+text = "Press \"F\" To Fix"
 
 [connection signal="body_entered" from="earth killzone" to="earth killzone" method="_on_body_entered"]

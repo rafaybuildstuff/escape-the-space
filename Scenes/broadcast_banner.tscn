@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dpyk0xtn4lwig"]
 
 [ext_resource type="Script" uid="uid://bvrb0tqs1u73c" path="res://broadcast_banner.gd" id="1_0s0yx"]
+[ext_resource type="FontFile" uid="uid://cjodqilwv3rht" path="res://Assets/text.ttf" id="2_hwbba"]
+[ext_resource type="AudioStream" uid="uid://4ymkxa77xytm" path="res://Music/pop.mp3" id="3_5bmlv"]
 
 [node name="BroadcastBanner" type="CanvasLayer" unique_id=1247835603]
 process_mode = 3
 script = ExtResource("1_0s0yx")
+message_id = "msg_1"
 
 [node name="BannerContainer" type="Control" parent="." unique_id=528681408]
 layout_mode = 3
@@ -35,6 +38,11 @@ offset_left = 37.0
 offset_top = 21.0
 offset_right = 811.0
 offset_bottom = 92.0
+theme_override_fonts/font = ExtResource("2_hwbba")
 theme_override_font_sizes/font_size = 21
 text = "Ugh! My ship crashed, I am stranded in space, and my rocket parts 
 are missing, I need to find them to escape"
+
+[node name="pop" type="AudioStreamPlayer2D" parent="." unique_id=1412644992]
+stream = ExtResource("3_5bmlv")
+volume_db = 15.0

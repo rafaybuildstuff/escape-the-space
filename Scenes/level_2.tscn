@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dc0hgkvpga6t4" path="res://Music/alien plannet music.mp3" id="25_5jii6"]
 [ext_resource type="AudioStream" uid="uid://7hred8eqvwud" path="res://Music/dying.mp3" id="27_kjoi8"]
 [ext_resource type="PackedScene" uid="uid://crkyps5viy3g1" path="res://Scenes/fire_astroid.tscn" id="27_nx14l"]
+[ext_resource type="FontFile" uid="uid://cjodqilwv3rht" path="res://Assets/text.ttf" id="29_nuasi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_15wb7"]
 texture = ExtResource("4_2mgoq")
@@ -142,13 +143,6 @@ limit_top = -550
 limit_right = 3550
 limit_bottom = 195
 script = ExtResource("2_q0ycs")
-
-[node name="portal2" parent="." unique_id=867010080 instance=ExtResource("5_v36qu")]
-z_index = -1
-position = Vector2(-61, -27)
-scale = Vector2(4, 4)
-target_scene = "uid://bhyesqe5da3oi"
-destination_portal_name = "portal3"
 
 [node name="CanvasLayer" parent="." unique_id=462013218 instance=ExtResource("6_cggpd")]
 
@@ -317,5 +311,40 @@ position = Vector2(1215, -532)
 rotation = -0.49741885
 
 [node name="SpawnMarker" type="Marker2D" parent="." unique_id=441409716]
+position = Vector2(130, 0)
+
+[node name="portal2" parent="." unique_id=867010080 instance=ExtResource("5_v36qu")]
+z_index = -1
+position = Vector2(-61, -27)
+scale = Vector2(4, 4)
+target_scene = "uid://bhyesqe5da3oi"
+destination_portal_name = "portal3"
+
+[node name="Label" type="Label" parent="." unique_id=81419870]
+offset_left = 124.0
+offset_top = -65.0
+offset_right = 235.0
+offset_bottom = -42.0
+theme_override_fonts/font = ExtResource("29_nuasi")
+theme_override_font_sizes/font_size = 14
+text = "\"E\" to equip GUN"
+
+[node name="Label2" type="Label" parent="." unique_id=668368262]
+offset_left = 522.0
+offset_top = -142.0
+offset_right = 633.0
+offset_bottom = -119.0
+theme_override_fonts/font = ExtResource("29_nuasi")
+theme_override_font_sizes/font_size = 14
+text = "\"Q\" to shoot"
+
+[node name="Label3" type="Label" parent="." unique_id=1024181304]
+offset_left = 2693.0
+offset_top = -190.0
+offset_right = 2804.0
+offset_bottom = -167.0
+theme_override_fonts/font = ExtResource("29_nuasi")
+theme_override_font_sizes/font_size = 14
+text = "shoot to break"
 
 [connection signal="body_entered" from="earth killzone" to="earth killzone" method="_on_body_entered"]
